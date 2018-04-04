@@ -4,6 +4,7 @@ const sha1 = require("sha1");
 const crypto = require("crypto");
 const appId = config.appId;
 const appSecret = config.appSecret;
+// 将获取的access_token和ticket存储在redis中
 exports.getAccessToken = function(req, res, next) {
     let url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`;
     redisClient.setItem(url, req, 'access_token', next);
